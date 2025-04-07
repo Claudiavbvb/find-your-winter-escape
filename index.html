@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Winter Escape Quiz</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #111;
+      background: white;
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #d71920;
+    }
+
+    .question {
+      margin-bottom: 2rem;
+    }
+
+    .question h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #111;
+    }
+
+    .answers label {
+      display: block;
+      margin: 0.5rem 0;
+      cursor: pointer;
+    }
+
+    button {
+      display: block;
+      background-color: #d71920;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 2rem auto;
+    }
+
+    button:hover {
+      background-color: #a9151a;
+    }
+
+    #result {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      border: 2px solid #d71920;
+      border-radius: 8px;
+      background-color: #fff7f7;
+    }
+
+    #result h3 {
+      color: #d71920;
+    }
+  </style>
+</head>
+<body>
+  <h1>Find Your Family's Winter Escape</h1>
+  <form id="quizForm">
+    <div class="question">
+      <h2>1. What’s your winter vibe?</h2>
+      <div class="answers">
+        <label><input type="radio" name="q1" value="Alpine Cocoon" required> A) Cozy nights, warm cocoa, and fuzzy socks</label>
+        <label><input type="radio" name="q1" value="Freestyle Fam Jam"> B) Hitting the park, catching air, and enjoying the sun</label>
+        <label><input type="radio" name="q1" value="Eco Explorer"> C) Hiking, learning, and being in nature</label>
+        <label><input type="radio" name="q1" value="Basecamp Booster"> D) Doing everything — skiing, climbing, snowshoeing!</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <h2>2. Pick a dream souvenir:</h2>
+      <div class="answers">
+        <label><input type="radio" name="q2" value="Freestyle Fam Jam" required> A) A GoPro highlight reel of your epic jumps</label>
+        <label><input type="radio" name="q2" value="Alpine Cocoon"> B) A bathrobe reminding you of the relaxing time in Laax</label>
+        <label><input type="radio" name="q2" value="Basecamp Booster"> C) A handcrafted Swiss chocolate bar you made yourselves</label>
+        <label><input type="radio" name="q2" value="Eco Explorer"> D) A certificate that you offset your travel or you planted a tree</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <h2>3. What sound most like you planning a trip?</h2>
+      <div class="answers">
+        <label><input type="radio" name="q3" value="Eco Explorer" required> A) Checking carbon impact and packing reusable cups</label>
+        <label><input type="radio" name="q3" value="Freestyle Fam Jam"> B) Picking cool gear and dreaming of jumps</label>
+        <label><input type="radio" name="q3" value="Alpine Cocoon"> C) Finding the best spas and researching the best restaurants</label>
+        <label><input type="radio" name="q3" value="Basecamp Booster"> D) Organizing all the activities and none of the chill</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <h2>4. What’s your go-to group activity?</h2>
+      <div class="answers">
+        <label><input type="radio" name="q4" value="Alpine Cocoon" required> A) Movie night or cozy dinner</label>
+        <label><input type="radio" name="q4" value="Eco Explorer"> B) Exploring trails and parks</label>
+        <label><input type="radio" name="q4" value="Basecamp Booster"> C) Game night or go climbing</label>
+        <label><input type="radio" name="q4" value="Freestyle Fam Jam"> D) Filming skits or action clips</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <h2>5. What would you most likely say on day 2 of vacation?</h2>
+      <div class="answers">
+        <label><input type="radio" name="q5" value="Alpine Cocoon" required> A) “Let’s hit the spa, then fondue.”</label>
+        <label><input type="radio" name="q5" value="Freestyle Fam Jam"> B) “Can we do the jump again?!”</label>
+        <label><input type="radio" name="q5" value="Eco Explorer"> C) “Look! A deer's footprint!”</label>
+        <label><input type="radio" name="q5" value="Basecamp Booster"> D) “Can we try something new today?”</label>
+      </div>
+    </div>
+
+    <button type="submit">Show My Winter Escape Match</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    const packages = {
+      "Alpine Cocoon": `
+        <h3>🔥 The Alpine Cocoon</h3>
+        <p>Cozy luxury meets snowy serenity. Wrap your family in comfort with this 3-night retreat designed for rest, reconnection, and just the right touch of winter magic.</p>
+      `,
+      "Freestyle Fam Jam": `
+        <h3>🏂 The Freestyle Fam Jam</h3>
+        <p>Ride together. Play louder. Make it legendary. A 3-night adventure in LAAX for air-loving, energy-filled families with coaching, snow tubing, and GoPro memories.</p>
+      `,
+      "Eco Explorer": `
+        <h3>🌱 The Eco Explorer</h3>
+        <p>Sustainable family fun. From tree-planting to eco-hikes, this 3-night LAAX escape teaches, inspires, and leaves a lighter footprint.</p>
+      `,
+      "Basecamp Booster": `
+        <h3>🧗 The Basecamp Booster</h3>
+        <p>Fuel up. Head out. Try it all. The action-packed 3-night family trip full of skiing, climbing, mini-Olympics, and nonstop fun at LAAX.</p>
+      `
+    };
+
+    document.getElementById("quizForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const formData = new FormData(this);
+      const scores = {};
+
+      for (let value of formData.values()) {
+        scores[value] = (scores[value] || 0) + 1;
+      }
+
+      const topMatch = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
+      document.getElementById("result").innerHTML = packages[topMatch];
+    });
+  </script>
+</body>
+</html>
